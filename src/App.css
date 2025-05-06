@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
-}
+/* Import the shared styles @import './css/both.css';*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Additional app-specific styles */
+.app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 15px;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .facebook-logo {
+    width: 140px;
+    height: 56px;
+    margin: 5px auto 20px;
+  }
+  
+  .info-box h2 {
+    font-size: 16px;
+  }
+  
+  .info-box p {
+    font-size: 13px;
+  }
+  
+  .continue-btn {
+    font-size: 15px;
+    height: 42px;
+  }
+  
+  .form-field input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Ensure the app fills the entire viewport on mobile */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
