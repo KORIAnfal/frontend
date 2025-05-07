@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Lock } from 'lucide-react';
 import profilePicture from '../assets/pfp.jpg'; // Update path as needed
 import './FacebookPasswordReset.css'; // Import the CSS file
@@ -15,7 +15,7 @@ export default function FacebookPasswordReset() {
     setPage(2);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
     if (!oldPassword || !newPassword || !confirmPassword) {

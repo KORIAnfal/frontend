@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import FacebookPasswordReset from './pages/FacebookPasswordReset.tsx';
+import FacebookPasswordReset from './pages/FacebookPasswordReset';
 
 function App() {
   return (
